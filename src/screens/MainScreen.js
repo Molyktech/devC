@@ -18,7 +18,7 @@ import {
 
 import { Font } from 'expo';
 import HomeScreen from './HomeScreen';
-//import Explore from './Explore';
+import Explore from './Explore';
 
 
 export default class MainScreen extends Component {
@@ -72,21 +72,34 @@ search = () => {
                 </Item>
              
                 </Body>
-                <Right>
-                <Button transparent>
-                    <Text>Search</Text>
-                </Button>
-                </Right>
-                {/* <Tabs>
-                    <Tab heading="Tab1">
-                        <HomeScreen />
-                    </Tab>
-                    <Tab heading="Tab2">
-                        <Text>Tab</Text>
-                    </Tab>
+                <Right />
+                </Header>
+                 <Tabs style={{ elevation: 2 }}>
+                 <Tab
+                   heading={
+                     <TabHeading>
+                       <Icon name="home" />
+                       <Text>Home</Text>
+                     </TabHeading>
+                   }
+                 >
+                   <HomeScreen />
+                 </Tab>
+               
+                 <Tab
+                    heading={
+                        <TabHeading>
+                            <Icon name="apps" />
+                            <Text>Explore</Text>
+                        </TabHeading>
+                    }
+                 >
+                    <Explore />
+                    
+                </Tab>
+                    
                 </Tabs>
-                 */}
-            </Header>
+                
              ) : null
             }
         </Container>
