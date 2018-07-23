@@ -13,7 +13,7 @@ import {
     Input, 
     Item,
     Text, 
-    Title
+    TabHeading
 } from 'native-base';
 
 import { Font } from 'expo';
@@ -25,7 +25,6 @@ export default class MainScreen extends Component {
     constructor(props) {
         super(props);
     this.state = {
-        search: '',
         fontLoaded: false
     };
 }
@@ -43,24 +42,20 @@ export default class MainScreen extends Component {
 }
 
   
-search = () => {   
-    // Set loading to true when the search starts to display a Spinner        
-    this.setState({            
-        loading: true          
-    });
-}
+
   render() {
     return (
         <Container style={styles.style}>
                       {
              this.state.fontLoaded ? (
+                 <Container>
             <Header hasTabs searchBar rounded>
                 <Left>
                 <Button transparent>
                     <Icon name='menu' />
                     </Button>
                 </Left>
-                <Body>
+                <Right>
                      <Item>
                     <Icon name="ios-search" />
                     <Input 
@@ -71,8 +66,8 @@ search = () => {
                    
                 </Item>
              
-                </Body>
-                <Right />
+                </Right>
+            
                 </Header>
                  <Tabs style={{ elevation: 2 }}>
                  <Tab
@@ -99,6 +94,7 @@ search = () => {
                 </Tab>
                     
                 </Tabs>
+                </Container>
                 
              ) : null
             }

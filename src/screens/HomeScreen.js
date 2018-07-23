@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import 
 { 
     Container,  
@@ -21,14 +21,9 @@ import
     Row
 } from 'native-base';
 
-const dataArray = [
-    { title: 'First Element', content: 'Lorem ipsum dolor sit amet' },
-    { title: 'Second Element', content: 'Lorem ipsum dolor sit amet' },
-    { title: 'Third Element', content: 'Lorem ipsum dolor sit amet' }
-  ];
 export default class CardExample extends Component {
  
-  async componentWillMount() {
+  async componentDidMount() {
     await Expo.Font.loadAsync({
       'Roboto': require('native-base/Fonts/Roboto.ttf'),
       'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
@@ -58,7 +53,7 @@ export default class CardExample extends Component {
                 </Body>
               </CardItem>
             
-            <CardItem footer button onPress={() => alert('This is Card Footer')}>
+            <CardItem footer button>
               <Grid>
                 <Row style={styles.row}>
                   <Col style={styles.col}>
@@ -70,9 +65,9 @@ export default class CardExample extends Component {
                   </Col>
                   <Col style={styles.col}>
                     
-                    <Icon active name="thumbs-up" />
+                    <Icon active name="thumbs-down" />
                       <Text numberOfLines={1} style={styles.iconText}>
-                        12 Likes
+                        2 Dislikes
                       </Text>
                   </Col>
                   <Col style={styles.col}>
@@ -88,12 +83,7 @@ export default class CardExample extends Component {
                       bookmarks
                     </Text>
                   </Col>
-                  <Col style={styles.col}>
-                    <Icon name="navigate" />
-                    <Text numberOfLines={1} style={styles.iconText}>
-                      navigate
-                    </Text>
-                  </Col>
+                  
                 </Row>
               </Grid>
            
@@ -101,30 +91,38 @@ export default class CardExample extends Component {
           </Card>
         </Content>
 
-        <Content padder>
-          <Accordion
-            dataArray={dataArray}
-            headerStyle={{ backgroundColor: '#b7daf8' }}
-            contentStyle={{ backgroundColor: '#9AA4DC' }}
-          />
-        </Content>
         <Content>
-          <List>
-            <ListItem avatar>
+          <Card>
+        <CardItem>
               <Left>
-                <Thumbnail source={{ uri: 'Image URL' }} />
+                <Thumbnail source={{uri: '../../assets/hijab.jpg'}} />
+                <Body>
+                  <Text>Smart Jane</Text>
+                  <Text note>Barnawa</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem cardBody>
+              <Image source={{uri: '../../assets/office.jpg'}} style={{height: 200, width: null, flex: 1}}/>
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Button transparent>
+                  <Icon active name="thumbs-up" />
+                  <Text>12 Likes</Text>
+                </Button>
               </Left>
               <Body>
-                <Text>Kumar Pratik</Text>
-                <Text note>Doing what you like will always keep you happy . .</Text>
+                <Button transparent>
+                  <Icon active name="chatbubbles" />
+                  <Text>4 Comments</Text>
+                </Button>
               </Body>
               <Right>
-              <Button transparent>
-                  <Text>View</Text>
-                </Button>
+                <Text>11h ago</Text>
               </Right>
-            </ListItem>
-          </List>
+            </CardItem>
+            </Card>
         </Content>
       </Container>
     );
